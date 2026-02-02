@@ -7,17 +7,19 @@ app = FastAPI(
     version="v1"
 )
 
+# --- CORS CONFIGURATION ---
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",  # local dev
-        "https://*.vercel.app"    # Vercel frontend
+        "https://ai-business-decision-engine.vercel.app",  # Vercel PROD
     ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
+# --- ROUTES ---
 app.include_router(router)
 
 
